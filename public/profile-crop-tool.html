@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Profile Crop Tool</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #080810; color: white; font-family: monospace; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; gap: 24px; }
+  .circle {
+    width: 200px; height: 200px; border-radius: 50%;
+    overflow: hidden; border: 3px solid #6366f1;
+    cursor: grab; position: relative; user-select: none;
+  }
+  .circle:active { cursor: grabbing; }
+  .circle img {
+    position: absolute;
+    width: auto; height: auto;
+    min-width: 100%; min-height: 100%;
+    pointer-events: none;
+  }
+  code { background: #1e1e2e; padding: 12px 20px; border-radius: 8px; font-size: 14px; border: 1px solid #ffffff20; }
+  p { color: #94a3b8; font-size: 13px; }
+</style>
+</head>
+<body>
+  <p>Arrastra la foto dentro del círculo para reencuadrar</p>
+  <div class="circle" id="circle">
+    <img src="/public/profile.png" id="img" draggable="false">
+  </div>
+  <code id="output">object-position: 50% 50%</code>
+  <p>Copia este valor y pégalo en About.astro</p>
+
+<script>
+  const circle = document.getElementById('circle');
+  const img = document.getElementById('img');
+  const output = document.getElementById('output');
+
+  let dragging = false;
+  let startX, startY, startLeft, startTop;
+  let posX = 50, posY = 50; // percentage
+
+  function updateImage() {
+    img.style.left = posX + '%';
+    img.style.top = posY + '%';
+    img.style.transform = `translate(-${posX}%, -${posY}%)`;
+    output.textContent = `object-[${Math.round(posX)}%_${Math.round(posY)}%]`;
+  }
+  updateImage();
+
+  circle.addEventListener('mousedown', e => {
+    dragging = true;
+    startX = e.clientX;
+    startY = e.clientY;
+    startLeft = posX;
+    startTop = posY;
+    e.preventDefault();
+  });
+
+  document.addEventListener('mousemove', e => {
+    if (!dragging) return;
+    const dx = ((e.clientX - startX) / 200) * 100;
+    const dy = ((e.clientY - startY) / 200) * 100;
+    posX = Math.max(0, Math.min(100, startLeft - dx));
+    posY = Math.max(0, Math.min(100, startTop - dy));
+    updateImage();
+  });
+
+  document.addEventListener('mouseup', () => { dragging = false; });
+
+  // Scroll to zoom
+  circle.addEventListener('wheel', e => {
+    e.preventDefault();
+    const scale = parseFloat(img.dataset.scale || 1);
+    const newScale = Math.max(1, Math.min(3, scale + (e.deltaY < 0 ? 0.1 : -0.1)));
+    img.dataset.scale = newScale;
+    img.style.width = (newScale * 100) + '%';
+    img.style.height = 'auto';
+    img.style.minWidth = (newScale * 100) + '%';
+    img.style.minHeight = (newScale * 100) + '%';
+    updateImage();
+  });
+</script>
+</body>
+</html>

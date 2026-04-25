@@ -1,0 +1,147 @@
+---
+const coreEntries = [
+  {
+    degree: "Master's",
+    title: 'Biomedical Data Science',
+    university: 'Rovira i Virgili University',
+    location: 'Tarragona, Spain',
+    period: '2023 – 2025',
+    logo: '/logos/urv.png',
+    whiteBg: true,
+    thesis: 'https://www.linkedin.com/posts/daniel-anchuela-cantarero_spatial-biology-imageanalysis-tool-multiplex-activity-7346516304851275777-uGGj?utm_source=share&utm_medium=member_desktop&rcm=ACoAADqpp5ABcv1wtWAFW99-yduBy-EAQ4y7jg8',
+  },
+  {
+    degree: "Bachelor's",
+    title: 'Biomedical Engineering',
+    university: 'San Pablo CEU University',
+    location: 'Madrid, Spain',
+    period: '2019 – 2023',
+    logo: '/logos/ceu.png',
+    whiteBg: false,
+    thesis: 'https://www.linkedin.com/posts/daniel-anchuela-cantarero_heartbeat-detection-with-neural-networks-activity-7096889660060147712-8xKH?utm_source=share&utm_medium=member_desktop&rcm=ACoAADqpp5ABcv1wtWAFW99-yduBy-EAQ4y7jg8',
+  },
+]
+
+const furtherEntries = [
+  {
+    degree: "Master's",
+    title: 'Astronomy & Astrophysics',
+    university: 'Universidad Internacional de La Rioja',
+    location: 'Online',
+    period: '2025 – 2026',
+    logo: '/logos/unir.png',
+    whiteBg: true,
+    thesis: null,
+  },
+  {
+    degree: "Master's",
+    title: 'Virtual Reality Development',
+    university: 'San Pablo CEU University',
+    location: 'Madrid, Spain',
+    period: '2019 – 2023',
+    logo: '/logos/ceu.png',
+    whiteBg: false,
+    thesis: 'https://www.linkedin.com/posts/daniel-anchuela-cantarero_gdd-easton-royal-activity-7311342140763070464-dtps?utm_source=share&utm_medium=member_desktop&rcm=ACoAADqpp5ABcv1wtWAFW99-yduBy-EAQ4y7jg8',
+  },
+]
+---
+
+<section id="education" class="py-24 border-t border-white/5">
+  <div class="max-w-7xl mx-auto px-6">
+    <h2 class="text-4xl font-bold text-white mb-12">Education</h2>
+
+    <div class="grid md:grid-cols-2 gap-12">
+
+      <!-- Core education -->
+      <div>
+        <h3 class="text-xs font-semibold uppercase tracking-widest text-slate-500 mb-8">Core Education</h3>
+        <ol class="relative border-l border-white/10 space-y-10 ml-3">
+          {coreEntries.map(entry => (
+            <li class="pl-8 relative">
+              <span class="absolute -left-[6px] top-8 w-2.5 h-2.5 rounded-full bg-slate-600 border-2 border-[#080810]"></span>
+              <div class="flex items-center gap-4 mb-3">
+                <img
+                  src={entry.logo}
+                  alt={entry.university}
+                  class={`w-16 h-16 rounded-xl object-contain shrink-0 ${entry.whiteBg ? 'bg-white p-1.5' : ''}`}
+                  onerror="this.style.display='none'"
+                />
+                <div class="flex-1 min-w-0">
+                  <div class="flex flex-wrap items-center gap-3 mb-1">
+                    <span class="text-sm text-slate-500">{entry.period}</span>
+                    <span class="text-xs px-2.5 py-0.5 rounded-full border bg-indigo-500/15 text-indigo-300 border-indigo-500/30">{entry.degree}</span>
+                  </div>
+                  <div class="flex items-center justify-between gap-2">
+                    <h4 class="text-white font-semibold text-lg leading-snug">{entry.title}</h4>
+                    {entry.thesis && (
+                      <a
+                        href={entry.thesis}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="text-slate-500 hover:text-indigo-300 transition-colors shrink-0"
+                        title="View thesis"
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                          <polyline points="15 3 21 3 21 9"/>
+                          <line x1="10" y1="14" x2="21" y2="3"/>
+                        </svg>
+                      </a>
+                    )}
+                  </div>
+                  <p class="text-indigo-300 text-sm mt-0.5">{entry.university} · {entry.location}</p>
+                </div>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+
+      <!-- Further studies -->
+      <div>
+        <h3 class="text-xs font-semibold uppercase tracking-widest text-slate-500 mb-8">Further Studies</h3>
+        <ol class="relative border-l border-white/10 space-y-10 ml-3">
+          {furtherEntries.map(entry => (
+            <li class="pl-8 relative">
+              <span class="absolute -left-[6px] top-8 w-2.5 h-2.5 rounded-full bg-slate-600 border-2 border-[#080810]"></span>
+              <div class="flex items-center gap-4 mb-3">
+                <img
+                  src={entry.logo}
+                  alt={entry.university}
+                  class={`w-16 h-16 rounded-xl object-contain shrink-0 ${entry.whiteBg ? 'bg-white p-1.5' : ''}`}
+                  onerror="this.style.display='none'"
+                />
+                <div class="flex-1 min-w-0">
+                  <div class="flex flex-wrap items-center gap-3 mb-1">
+                    <span class="text-sm text-slate-500">{entry.period}</span>
+                    <span class="text-xs px-2.5 py-0.5 rounded-full border bg-indigo-500/15 text-indigo-300 border-indigo-500/30">{entry.degree}</span>
+                  </div>
+                  <div class="flex items-center justify-between gap-2">
+                    <h4 class="text-white font-semibold text-lg leading-snug">{entry.title}</h4>
+                    {entry.thesis && (
+                      <a
+                        href={entry.thesis}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="text-slate-500 hover:text-indigo-300 transition-colors shrink-0"
+                        title="View thesis"
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                          <polyline points="15 3 21 3 21 9"/>
+                          <line x1="10" y1="14" x2="21" y2="3"/>
+                        </svg>
+                      </a>
+                    )}
+                  </div>
+                  <p class="text-indigo-300 text-sm mt-0.5">{entry.university} · {entry.location}</p>
+                </div>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+
+    </div>
+  </div>
+</section>

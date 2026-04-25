@@ -1,0 +1,35 @@
+---
+import ProjectCard from './ProjectCard.astro'
+import { projects } from '../data/projects'
+---
+
+<section id="projects" class="py-24 border-t border-white/5">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="flex items-end justify-between mb-3">
+      <h2 class="text-4xl font-bold text-white">Projects</h2>
+      <a
+        href="https://github.com/anchu09"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-sm text-slate-400 hover:text-white transition-colors"
+      >
+        View all on GitHub →
+      </a>
+    </div>
+    <p class="text-slate-500 text-sm mb-12">A selection of public work — not everything I've built.</p>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+      {projects.map(p => (
+        <ProjectCard
+          slug={p.slug}
+          title={p.title}
+          description={p.tagline}
+          tags={p.tags}
+          github={p.liveUrl ? undefined : (p.github ?? p.githubRepos?.[0]?.url)}
+          liveUrl={p.liveUrl}
+          year={p.year}
+          badges={p.badges}
+        />
+      ))}
+    </div>
+  </div>
+</section>

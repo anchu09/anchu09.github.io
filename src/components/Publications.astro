@@ -1,0 +1,92 @@
+---
+const publications = [
+  {
+    title: 'Agentic computer vision chatbot for astronomical image analysis',
+    year: '2026',
+    badge: 'In progress',
+    description:
+      'Multimodal agentic system combining SIMBAD/NED name resolution, multi-band image retrieval (HLA, MAST), morphological analysis, and LLM-generated summaries via a streaming chat interface.',
+    link: null,
+  },
+  {
+    title: 'Spatial Biology Computer Vision Tool for Multiplex Microscopy',
+    year: '2025',
+    badge: 'Published',
+    description:
+      'Modular Python pipeline for multiplex immunofluorescence analysis: segmentation, cell phenotyping, spatial statistics, and tumor microenvironment quantification at single-cell resolution.',
+    link: 'https://www.linkedin.com/posts/daniel-anchuela-cantarero_spatial-biology-imageanalysis-tool-multiplex-activity-7346516304851275777-uGGj?utm_source=share&utm_medium=member_desktop&rcm=ACoAADqpp5ABcv1wtWAFW99-yduBy-EAQ4y7jg8',
+  },
+  {
+    title: 'Leveraging Nextflow for Scalable Processing in Fluorescence Microscopy',
+    year: '2024',
+    badge: 'Conference',
+    description:
+      'Presented at the Spanish & Portuguese Advanced Optical Microscopy Meeting 2024. Workflow orchestration approach for large-scale fluorescence microscopy datasets using HPC/GPU infrastructure.',
+    link: 'https://drive.google.com/file/d/1EvxPp7STseUaOvedvKcIibyjn0KbqJOU/view?usp=sharing',
+  },
+  {
+    title: 'Gait alterations in older adults walking with different body weight support and velocity settings on the SWalker robotic platform',
+    year: '2024',
+    badge: 'In progress',
+    description:
+      'Analysis of biomechanical gait metrics (cadence, step width, gait phase segmentation) from EMG and ROM biosignals collected during assisted robotic walking on the SWalker platform.',
+    link: null,
+  },
+  {
+    title: 'Easton Royal — VR Interactive Experience',
+    year: '2024',
+    badge: 'Published',
+    description:
+      'Immersive VR escape room built in Unity/C# for Oculus Quest, published on SideQuest. Covers real-time 3D environment design, physics-based spatial interaction, and XR UX principles.',
+    link: 'https://www.linkedin.com/posts/daniel-anchuela-cantarero_gdd-easton-royal-activity-7311342140763070464-dtps?utm_source=share&utm_medium=member_desktop&rcm=ACoAADqpp5ABcv1wtWAFW99-yduBy-EAQ4y7jg8',
+  },
+  {
+    title: 'Detection and classification of heartbeats with neural networks',
+    year: '2023',
+    badge: 'Published',
+    description:
+      'Deep learning system for ECG arrhythmia detection and multi-class classification on the MIT-BIH Arrhythmia Database.',
+    link: 'https://www.linkedin.com/posts/daniel-anchuela-cantarero_heartbeat-detection-with-neural-networks-activity-7096889660060147712-8xKH?utm_source=share&utm_medium=member_desktop&rcm=ACoAADqpp5ABcv1wtWAFW99-yduBy-EAQ4y7jg8',
+  },
+]
+
+const badgeColors: Record<string, string> = {
+  'Published':    'bg-emerald-500/15 text-emerald-300 border-emerald-500/30',
+  'Conference':   'bg-blue-500/15 text-blue-300 border-blue-500/30',
+  'Preprint':     'bg-amber-500/15 text-amber-300 border-amber-500/30',
+  'In progress':  'bg-amber-500/15 text-amber-300 border-amber-500/30',
+  'Thesis':       'bg-violet-500/15 text-violet-300 border-violet-500/30',
+}
+---
+
+<section id="publications" class="py-24 border-t border-white/5">
+  <div class="max-w-7xl mx-auto px-6">
+    <h2 class="text-4xl font-bold text-white mb-12">Publications</h2>
+    <ol class="relative border-l border-white/10 space-y-12 ml-3">
+      {publications.map(pub => (
+        <li class="pl-10 relative">
+          <span class="absolute -left-[6px] top-10 w-2.5 h-2.5 rounded-full bg-indigo-500 border-2 border-[#0f0f13]"></span>
+          <div class="flex flex-wrap items-center gap-3 mb-2">
+            <span class="text-sm text-slate-500">{pub.year}</span>
+            <span class={`text-sm px-3 py-0.5 rounded-full border ${badgeColors[pub.badge]}`}>
+              {pub.badge}
+            </span>
+          </div>
+          <h3 class="text-white font-semibold text-xl leading-snug mb-2">
+            {pub.link ? (
+              <a
+                href={pub.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="hover:text-indigo-300 transition-colors"
+              >
+                {pub.title} ↗
+              </a>
+            ) : pub.title}
+          </h3>
+          <p class="text-slate-400 text-base leading-relaxed">{pub.description}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

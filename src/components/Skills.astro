@@ -1,0 +1,168 @@
+---
+import { icons, iconClass } from '../data/icons'
+
+type Skill = { name: string; tip: string }
+
+const categories: { label: string; pill: string; card: string; skills: Skill[] }[] = [
+  {
+    label: 'Programming',
+    pill: 'text-indigo-300 border-white/10 bg-[#0f0f13]',
+    card: 'border-indigo-500/40',
+    skills: [
+      { name: 'Python', tip: 'Core language across all projects and roles' },
+      { name: 'SQL',    tip: 'Data pipelines and queries at AstraZeneca' },
+      { name: 'R',      tip: 'Statistical analysis, data visualization & scripting' },
+      { name: 'Bash',   tip: 'Always present — scripting, automation & dev workflows' },
+      { name: 'Java',   tip: 'Academic and early engineering work' },
+      { name: 'C#',     tip: 'Easton Royal VR escape room built in Unity' },
+    ],
+  },
+  {
+    label: 'Generative AI',
+    pill: 'text-violet-300 border-white/10 bg-[#0f0f13]',
+    card: 'border-violet-500/40',
+    skills: [
+      { name: 'LangChain',            tip: 'RAG orchestration at AstraZeneca & RAG Studio' },
+      { name: 'LangSmith',            tip: 'LLM observability & tracing at AstraZeneca' },
+      { name: 'RAG',                  tip: 'Enterprise document retrieval at AstraZeneca' },
+      { name: 'Embeddings',           tip: 'Semantic indexing at AstraZeneca & RAG Studio' },
+      { name: 'Semantic Search',      tip: 'Hybrid semantic search at AstraZeneca & RAG Studio' },
+      { name: 'Multimodal Retrieval', tip: 'Document retrieval at AstraZeneca & multi-band images in AstronomIA' },
+      { name: 'Doc Intelligence',     tip: 'Multimodal ETL pipeline at AstraZeneca' },
+      { name: 'Generative BI',        tip: 'AI-powered analytics at AstraZeneca' },
+    ],
+  },
+  {
+    label: 'Machine Learning',
+    pill: 'text-rose-300 border-white/10 bg-[#0f0f13]',
+    card: 'border-rose-500/40',
+    skills: [
+      { name: 'PyTorch',             tip: 'U-Net training at CNIO & deep learning projects' },
+      { name: 'TensorFlow',          tip: 'Heartbeat arrhythmia classifier' },
+      { name: 'Scikit-learn',        tip: 'Used across many data science projects' },
+      { name: 'Deep Learning',       tip: '2D image & 1D time-series classification (CNIO, ECG)' },
+      { name: 'Supervised Learning', tip: 'ECG classification & cell phenotyping at CNIO' },
+      { name: 'Clustering',          tip: 'Cell phenotyping at CNIO & EMG contraction detection' },
+      { name: 'Model Evaluation',    tip: 'Accuracy, F1, precision & recall across all ML projects' },
+      { name: 'Data Augmentation',  tip: 'ECG signal augmentation & image transforms at CNIO' },
+    ],
+  },
+  {
+    label: 'Computer Vision',
+    pill: 'text-cyan-300 border-white/10 bg-[#0f0f13]',
+    card: 'border-cyan-500/40',
+    skills: [
+      { name: 'OpenCV',            tip: 'Image processing at CNIO & AstronomIA' },
+      { name: 'U-Net',             tip: 'Tumor invasion front detection in H&E images at CNIO' },
+      { name: 'CNNs',              tip: 'Heartbeat Classifier & tumor classifier at CNIO' },
+      { name: 'Spatial Analysis',   tip: 'Tumor microenvironment analysis at CNIO' },
+      { name: 'Classification',    tip: 'ECG arrhythmia & cell phenotype classification' },
+      { name: 'Segmentation',      tip: 'Cell & tumor segmentation at CNIO' },
+      { name: 'Feature Extraction',tip: 'Cell marker extraction in multiplex immunofluorescence at CNIO' },
+      { name: 'Quantitative Analysis', tip: 'Cell counts, spatial statistics & tumor microenvironment at CNIO' },
+    ],
+  },
+  {
+    label: 'MLOps & Cloud (AWS)',
+    pill: 'text-orange-300 border-white/10 bg-[#0f0f13]',
+    card: 'border-orange-500/40',
+    skills: [
+      { name: 'SageMaker',    tip: 'Model deployment & validation at AstraZeneca' },
+      { name: 'S3',           tip: 'Document storage pipelines at AstraZeneca' },
+      { name: 'ECS',          tip: 'Container orchestration at AstraZeneca' },
+      { name: 'CodeBuild',    tip: 'CI/CD pipelines at AstraZeneca' },
+      { name: 'CodePipeline', tip: 'Automated deployment at AstraZeneca' },
+      { name: 'CloudWatch',   tip: 'Monitoring & observability at AstraZeneca' },
+      { name: 'Docker',       tip: 'Containerisation at AstraZeneca, AstronomIA & RAG Studio' },
+      { name: 'Git',          tip: 'Version control across all projects' },
+      { name: 'Linux',        tip: 'HPC at CNIO, AstraZeneca servers & general dev environment' },
+      { name: 'HPC Clusters', tip: 'Large-scale microscopy processing at CNIO with Slurm' },
+    ],
+  },
+  {
+    label: 'Data & Engineering',
+    pill: 'text-emerald-300 border-white/10 bg-[#0f0f13]',
+    card: 'border-emerald-500/40',
+    skills: [
+      { name: 'FastAPI',       tip: 'Backend for all chatbot projects at AstraZeneca & personal projects' },
+      { name: 'PostgreSQL',    tip: 'Document & chat history storage across chatbot projects' },
+      { name: 'Redis',         tip: 'Cache layer for chatbot projects' },
+      { name: 'Celery',        tip: 'Async task queue across all chatbot projects' },
+      { name: 'Alembic',       tip: 'Database versioning & migrations across chatbot projects' },
+      { name: 'Nextflow',      tip: 'Biological data processing pipelines at CNIO — presented at SPAMOM 2024' },
+      { name: 'ETL Pipelines', tip: 'Document ingestion pipeline at AstraZeneca' },
+      { name: 'API Integration', tip: 'MS Graph API & SharePoint at AstraZeneca' },
+    ],
+  },
+  {
+    label: 'Signal & Analytics',
+    pill: 'text-pink-300 border-white/10 bg-[#0f0f13]',
+    card: 'border-pink-500/40',
+    skills: [
+      { name: 'SciPy',                 tip: 'EMG/ROM signal processing at Werium' },
+      { name: 'Fourier Analysis',      tip: 'Frequency analysis & noise filtering — biosignals at Werium & ECG classifier' },
+      { name: 'Filtering & Denoising', tip: 'Butterworth bandpass filter on biosignals at Werium & ECG classifier' },
+      { name: 'Statistical Analysis',  tip: 'Comparative analysis across gait study & ML projects' },
+      { name: 'Hypothesis Testing',    tip: 'p-values & Wilks\' lambda in gait publication' },
+      { name: 'Data Visualization',    tip: 'Matplotlib & ggplot across all projects' },
+    ],
+  },
+]
+---
+
+<section id="skills" class="py-24 border-t border-white/5">
+  <div class="max-w-7xl mx-auto px-6">
+    <h2 class="text-4xl font-bold text-white mb-12">Tech Stack</h2>
+    <div class="flex flex-col gap-6">
+      {categories.map(cat => (
+        <div class={`rounded-xl border bg-white/[0.02] p-5 ${cat.card}`}>
+          <h3 class="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-4">{cat.label}</h3>
+          <div class="flex flex-wrap gap-2">
+            {cat.skills.map(s => (
+              <span
+                class={`skill-pill flex flex-1 min-w-max items-center justify-center gap-1.5 px-3 py-1.5 text-sm rounded-full border font-medium ${cat.pill}`}
+                data-tip={s.tip}
+              >
+                {icons[s.name] && <img
+                  src={icons[s.name]}
+                  alt=""
+                  class={`shrink-0 ${iconClass(icons[s.name])}`}
+                />}
+                {s.name}
+              </span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .skill-pill {
+    position: relative;
+  }
+  .skill-pill::before {
+    content: attr(data-tip);
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(10, 10, 18, 0.95);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: #cbd5e1;
+    font-size: 0.72rem;
+    font-weight: 400;
+    padding: 6px 10px;
+    border-radius: 8px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.18s ease;
+    z-index: 50;
+    backdrop-filter: blur(8px);
+  }
+  .skill-pill:hover::before {
+    opacity: 1;
+  }
+</style>
